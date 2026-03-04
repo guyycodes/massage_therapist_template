@@ -1,0 +1,11 @@
+# Robots.txt for Serenity Touch Massage
+# PLACEHOLDER: Update Sitemap URL with your actual domain
+
+User-agent: *
+Allow: /
+
+Sitemap: https://massage.widgetfied.com/sitemap.xml
+
+# Disallow admin/private paths if any
+# Disallow: /admin/
+# Disallow: /api/

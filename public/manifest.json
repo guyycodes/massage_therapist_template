@@ -1,0 +1,16 @@
+{
+  "name": "Serenity Touch Massage",
+  "short_name": "Serenity Touch",
+  "description": "Professional massage therapy — relaxation, recovery, and wellness.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#171717",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
+import './index.css'
+import { PostHogProvider } from './contexts/PostHogProvider.jsx'
+import { GoogleAnalyticsProvider } from './contexts/GoogleAnalyticsProvider.jsx'
+
+if (import.meta.env.PROD) {
+  console.info = () => {}
+  console.debug = () => {}
+  console.log = () => {}
+  console.warn = () => {}
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <PostHogProvider>
+        <GoogleAnalyticsProvider>
+          <App />
+        </GoogleAnalyticsProvider>
+      </PostHogProvider>
+    </BrowserRouter>
+  </StrictMode>,
+)
