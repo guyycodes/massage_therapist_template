@@ -15,7 +15,7 @@ const FALLBACK_REVIEWS = [
 
 const SKELETON_COUNT = 2
 
-const GOOGLE_BUSINESS_URL = 'https://www.google.com/maps/place/YOUR_BUSINESS'
+const GOOGLE_BUSINESS_URL = 'https://www.google.com/maps/search/massage+therapy+LoDo+Denver+CO'
 
 const GoogleLogo = () => (
   <svg className="w-10 h-10" viewBox="0 0 48 48">

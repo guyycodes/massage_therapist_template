@@ -3,7 +3,7 @@ import {
   Heart, Leaf, Flame, Droplets, Baby, Zap,
   Shield, Clock, Award, Users,
   ArrowRight, Star, Quote, CheckCircle,
-  Phone, ChevronDown
+  Phone, ChevronDown, Gift, BadgeCheck
 } from 'lucide-react'
 import { useIntersectionObserver, useStaggeredIntersection } from '../hooks/useIntersectionObserver'
 import { BookingWidget, JobPortalWidget } from '../hooks/useWidgetfied'
@@ -188,9 +188,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ==================== WHY CHOOSE SECTION ==================== */}
-      <section className="py-32 bg-white">
+      {/* ==================== PROMO BANNER ==================== */}
+      <section className="bg-accent-gold">
+        <div className="container-custom py-5">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center">
+            <div className="flex items-center gap-2">
+              <Gift className="w-5 h-5 text-black" />
+              <span className="text-black font-semibold text-lg tracking-wide">New Client Special</span>
+            </div>
+            <span className="text-black/80 font-light">
+              $20 off your first massage session — use code <strong className="font-semibold">WELCOME20</strong>
+            </span>
+            <BookingWidget id="promo-booking-widget" />
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== TRUST BADGES ==================== */}
+      <section className="py-10 bg-neutral-100 border-b border-neutral-200">
         <div className="container-custom">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+            <div className="flex items-center gap-2 text-neutral-400">
+              <BadgeCheck className="w-6 h-6" />
+              <span className="text-xs uppercase tracking-[0.15em] font-medium">Licensed LMT</span>
+            </div>
+            <div className="flex items-center gap-2 text-neutral-400">
+              <Shield className="w-6 h-6" />
+              <span className="text-xs uppercase tracking-[0.15em] font-medium">AMTA Member</span>
+            </div>
+            <div className="flex items-center gap-2 text-neutral-400">
+              <Award className="w-6 h-6" />
+              <span className="text-xs uppercase tracking-[0.15em] font-medium">NCBTMB Certified</span>
+            </div>
+            <div className="flex items-center gap-2 text-neutral-400">
+              <CheckCircle className="w-6 h-6" />
+              <span className="text-xs uppercase tracking-[0.15em] font-medium">Colorado Licensed</span>
+            </div>
+            <div className="flex items-center gap-2 text-neutral-400">
+              <Star className="w-6 h-6" />
+              <span className="text-xs uppercase tracking-[0.15em] font-medium">5.0 Google Rating</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== WHY CHOOSE SECTION ==================== */}
+      <section className="relative py-32 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=2000&q=80')`,
+            filter: 'blur(6px) brightness(0.95)',
+            transform: 'scale(1.05)',
+          }}
+        />
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+        <div className="relative z-10 container-custom">
           <div
             ref={whyObserver.ref}
             className={`text-center mb-20 animate-fade-up ${whyObserver.isVisible ? 'visible' : ''}`}
@@ -212,10 +265,10 @@ export default function Home() {
                   key={index}
                   ref={(el) => setWhyRef(index, el)}
                   data-item-id={index}
-                  className={`text-center p-8 group animate-fade-up ${whyVisible[index] ? 'visible' : ''}`}
+                  className={`text-center p-8 group bg-white/60 backdrop-blur-md border border-white/50 shadow-sm hover:shadow-lg hover:bg-white/80 transition-all duration-300 animate-fade-up ${whyVisible[index] ? 'visible' : ''}`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="w-20 h-20 mx-auto mb-6 border border-neutral-200 rounded-full flex items-center justify-center group-hover:border-accent-gold transition-colors duration-300">
+                  <div className="w-20 h-20 mx-auto mb-6 border border-neutral-200/60 rounded-full flex items-center justify-center bg-white/50 group-hover:border-accent-gold group-hover:bg-accent-gold/10 transition-all duration-300">
                     <Icon className="w-6 h-6 text-neutral-400 group-hover:text-accent-gold transition-colors duration-300" />
                   </div>
                   <h3 className="text-lg font-medium mb-3 tracking-wide">{item.title}</h3>
@@ -228,17 +281,26 @@ export default function Home() {
       </section>
 
       {/* ==================== SERVICES SECTION ==================== */}
-      <section className="py-32 bg-neutral-50">
-        <div className="container-custom">
+      <section className="relative py-32 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=2000&q=80')`,
+            filter: 'blur(8px) brightness(0.9)',
+            transform: 'scale(1.05)',
+          }}
+        />
+        <div className="absolute inset-0 bg-neutral-950/70 backdrop-blur-sm" />
+        <div className="relative z-10 container-custom">
           <div
             ref={servicesObserver.ref}
             className={`text-center mb-20 animate-fade-up ${servicesObserver.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="text-4xl md:text-5xl font-display font-light text-neutral-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-display font-light text-white mb-4">
               Our Services
             </h2>
             <div className="h-px w-32 bg-accent-gold mx-auto my-8"></div>
-            <p className="text-xl text-neutral-600 font-light max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-300 font-light max-w-2xl mx-auto">
               Therapeutic massage modalities to address your unique needs
             </p>
           </div>
@@ -251,19 +313,19 @@ export default function Home() {
                   key={index}
                   ref={(el) => setServiceRef(index, el)}
                   data-item-id={index}
-                  className={`group bg-white p-8 border border-neutral-200 hover:border-accent-gold/30 transition-all duration-300 hover:shadow-lg animate-fade-up ${serviceVisible[index] ? 'visible' : ''}`}
+                  className={`group bg-white/10 backdrop-blur-lg p-8 border border-white/15 hover:border-accent-gold/30 hover:bg-white/15 transition-all duration-300 hover:shadow-xl animate-fade-up ${serviceVisible[index] ? 'visible' : ''}`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 border border-neutral-200 rounded-full flex items-center justify-center group-hover:border-accent-gold group-hover:bg-accent-gold/5 transition-all duration-300">
-                      <Icon className="w-5 h-5 text-neutral-400 group-hover:text-accent-gold transition-colors" />
+                    <div className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center group-hover:border-accent-gold group-hover:bg-accent-gold/10 transition-all duration-300">
+                      <Icon className="w-5 h-5 text-white/60 group-hover:text-accent-gold transition-colors" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-medium tracking-wide">{service.title}</h3>
-                      <span className="text-xs text-neutral-400 uppercase tracking-wider">{service.duration}</span>
+                      <h3 className="text-lg font-medium tracking-wide text-white">{service.title}</h3>
+                      <span className="text-xs text-white/40 uppercase tracking-wider">{service.duration}</span>
                     </div>
                   </div>
-                  <p className="text-neutral-500 font-light leading-relaxed mb-4">{service.description}</p>
+                  <p className="text-white/60 font-light leading-relaxed mb-4">{service.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-accent-gold font-medium">{service.price}</span>
                     <BookingWidget id={`home-service-${index}-booking-widget`} />
@@ -276,7 +338,7 @@ export default function Home() {
           <div className="text-center mt-16">
             <Link
               to="/services"
-              className="inline-flex items-center gap-3 text-neutral-900 font-medium tracking-wider uppercase text-sm hover:text-accent-gold transition-colors group"
+              className="inline-flex items-center gap-3 text-white font-medium tracking-wider uppercase text-sm hover:text-accent-gold transition-colors group"
             >
               View All Services
               <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
@@ -378,8 +440,8 @@ export default function Home() {
 
             <div className="flex items-center justify-center gap-4 text-neutral-400">
               <span className="text-sm uppercase tracking-wider">or call directly</span>
-              <a href="tel:+15551234567" className="text-accent-gold text-xl font-light hover:text-white transition-colors">
-                (555) 123-4567
+              <a href="tel:+13035550172" className="text-accent-gold text-xl font-light hover:text-white transition-colors">
+                (303) 555-0172
               </a>
             </div>
 

@@ -259,10 +259,10 @@ export default function About() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <BookingWidget id="about-cta-booking-widget" />
             <a
-              href="tel:+15551234567"
+              href="tel:+13035550172"
               className="inline-flex items-center justify-center gap-3 text-accent-gold font-medium tracking-wider uppercase text-sm hover:text-white transition-colors"
             >
-              Call: (555) 123-4567
+              Call: (303) 555-0172
             </a>
           </div>
         </div>

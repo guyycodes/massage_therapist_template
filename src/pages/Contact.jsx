@@ -12,8 +12,8 @@ const CONTACT_INFO = [
   {
     icon: Phone,
     title: 'Phone',
-    details: '(555) 123-4567',
-    link: 'tel:+15551234567',
+    details: '(303) 555-0172',
+    link: 'tel:+13035550172',
   },
   {
     icon: Mail,
@@ -24,8 +24,8 @@ const CONTACT_INFO = [
   {
     icon: MapPin,
     title: 'Location',
-    details: '123 Wellness Way, Suite 200\nYour City, ST 00000',
-    link: null,
+    details: '1755 Blake Street, Suite 220\nDenver, CO 80202',
+    link: 'https://www.google.com/maps/dir/?api=1&destination=1755+Blake+Street+Suite+220+Denver+CO+80202',
   },
   {
     icon: Clock,
@@ -36,9 +36,9 @@ const CONTACT_INFO = [
 ]
 
 const SOCIAL_LINKS = [
-  { icon: Facebook, href: 'https://facebook.com', label: 'Facebook' },
-  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
+  { icon: Facebook, href: 'https://facebook.com/serenitytouchmassage', label: 'Facebook' },
+  { icon: Instagram, href: 'https://instagram.com/serenitytouchmassage', label: 'Instagram' },
+  { icon: Youtube, href: 'https://youtube.com/@serenitytouchmassage', label: 'YouTube' },
 ]
 
 export default function Contact() {
@@ -169,7 +169,7 @@ export default function Contact() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="input-field"
-                        placeholder="(555) 000-0000"
+                        placeholder="(303) 000-0000"
                       />
                     </div>
                     <div>
@@ -331,7 +331,7 @@ export default function Contact() {
         >
           <div className="h-[400px] bg-neutral-900 relative">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d-122.4194154846816!3d37.77492927975945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064e2b9c7cd%3A0x79144f7b2ece5b88!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1702830000000!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.589!2d-105.0009!3d39.7530!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78c3457a31c7%3A0x7db9c2079d413b5!2sLoDo%2C%20Denver%2C%20CO!5e0!3m2!1sen!2sus!4v1702830000000!5m2!1sen!2sus"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -345,10 +345,10 @@ export default function Contact() {
               <div className="container-custom flex items-center justify-between">
                 <div className="text-white">
                   <h3 className="text-xl font-display font-light mb-1">Visit Our Studio</h3>
-                  <p className="text-neutral-300 text-sm font-light">123 Wellness Way, Suite 200, Your City</p>
+                  <p className="text-neutral-300 text-sm font-light">1755 Blake Street, Suite 220, Denver</p>
                 </div>
                 <a
-                  href="https://maps.google.com"
+                  href="https://www.google.com/maps/dir/?api=1&destination=1755+Blake+Street+Suite+220+Denver+CO+80202"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hidden sm:inline-flex items-center gap-2 text-accent-gold text-sm uppercase tracking-wider hover:text-white transition-colors"
@@ -375,10 +375,10 @@ export default function Contact() {
             Experience the difference of truly personalized massage therapy.
           </p>
           <a
-            href="tel:+15551234567"
+            href="tel:+13035550172"
             className="inline-flex items-center gap-3 text-accent-gold font-medium tracking-wider uppercase text-sm hover:text-white transition-colors"
           >
-            Call Direct: (555) 123-4567
+            Call Direct: (303) 555-0172
           </a>
         </div>
       </section>

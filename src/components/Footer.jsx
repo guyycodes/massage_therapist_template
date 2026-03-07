@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import {
   Phone, Mail, MapPin, Clock,
   Facebook, Instagram, Youtube,
-  Heart
+  Heart, Shield
 } from 'lucide-react'
 import { BookingWidget } from '../hooks/useWidgetfied'
 
@@ -30,24 +30,24 @@ const CONTENT = {
     { name: 'Terms of Service', href: '/terms' },
   ],
   social: [
-    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com', color: 'hover:text-blue-500' },
-    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com', color: 'hover:text-pink-500' },
-    { name: 'YouTube', icon: Youtube, href: 'https://youtube.com', color: 'hover:text-red-500' },
+    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/serenitytouchmassage', color: 'hover:text-blue-500' },
+    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/serenitytouchmassage', color: 'hover:text-pink-500' },
+    { name: 'YouTube', icon: Youtube, href: 'https://youtube.com/@serenitytouchmassage', color: 'hover:text-red-500' },
   ],
   contact: {
-    phone: { label: 'Phone', value: '(555) 123-4567', href: 'tel:+15551234567' },
+    phone: { label: 'Phone', value: '(303) 555-0172', href: 'tel:+13035550172' },
     email: { label: 'Email', value: 'hello@serenitytouchmassage.com', href: 'mailto:hello@serenitytouchmassage.com' },
     hours: { label: 'Hours', value: 'Mon–Fri: 9AM–7PM\nSat: 10AM–5PM' },
-    address: { label: 'Location', value: '123 Wellness Way, Suite 200\nYour City, ST 00000' },
+    address: { label: 'Location', value: '1755 Blake Street, Suite 220\nDenver, CO 80202' },
   },
   map: {
     title: 'Find Us',
-    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d-122.4194154846816!3d37.77492927975945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064e2b9c7cd%3A0x79144f7b2ece5b88!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1702830000000!5m2!1sen!2sus',
-    directionsUrl: 'https://maps.google.com',
-    address: '123 Wellness Way, Your City',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3067.589!2d-105.0009!3d39.7530!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c78c3457a31c7%3A0x7db9c2079d413b5!2sLoDo%2C%20Denver%2C%20CO!5e0!3m2!1sen!2sus!4v1702830000000!5m2!1sen!2sus',
+    directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=1755+Blake+Street+Suite+220+Denver+CO+80202',
+    address: '1755 Blake Street, Denver',
     serviceCoverage: {
       title: 'Service Area',
-      areas: ['Downtown', 'Midtown', 'Uptown', 'Westside', 'Eastside'],
+      areas: ['LoDo', 'Capitol Hill', 'Cherry Creek', 'Highlands', 'Washington Park'],
     },
   },
 }
@@ -255,10 +255,19 @@ export default function Footer() {
             <p className="text-gray-400 text-sm text-center md:text-left">
               &copy; {currentYear} Serenity Touch Massage. All rights reserved.
             </p>
-            <p className="text-gray-400 text-sm flex items-center gap-1">
-              Made with <Heart className="w-3 h-3 text-accent-gold" /> by{' '}
-              <span className="text-accent-gold">Serenity Touch</span>
-            </p>
+            <div className="flex items-center gap-4">
+              <Link
+                to="/admin"
+                className="flex items-center gap-1.5 text-gray-600 hover:text-gray-400 transition-colors text-xs"
+              >
+                <Shield className="w-3 h-3" />
+                Admin
+              </Link>
+              <p className="text-gray-400 text-sm flex items-center gap-1">
+                Made with <Heart className="w-3 h-3 text-accent-gold" /> by{' '}
+                <span className="text-accent-gold">Serenity Touch</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

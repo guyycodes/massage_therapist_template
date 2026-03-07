@@ -148,4 +148,16 @@
 
   /* Modal support */
   body.modal-open { overflow: hidden; }
+
+  /* Safe area for sticky mobile CTA bar */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+/* Bottom padding so footer content isn't hidden behind sticky mobile CTA */
+@media (max-width: 1023px) {
+  footer {
+    padding-bottom: 64px;
+  }
 }

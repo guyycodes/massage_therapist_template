@@ -11,8 +11,8 @@ const NAV_LINKS = [
 ]
 
 const CONTACT = {
-  phone: '(555) 123-4567',
-  phoneHref: 'tel:+15551234567',
+  phone: '(303) 555-0172',
+  phoneHref: 'tel:+13035550172',
   email: 'hello@serenitytouchmassage.com',
   hours: 'Mon–Sat: 9AM–7PM',
 }
