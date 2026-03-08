@@ -316,7 +316,7 @@ export default function Contact() {
                   displayMode="button"
                   className="w-full"
                 />
-                <p className="text-neutral-400 text-xs mt-2 tracking-wider uppercase">Appointment Lookup</p>
+                <p className="text-neutral-400 text-xs mt-2 tracking-wider uppercase">Client Portal</p>
               </div>
             </div>
           </div>

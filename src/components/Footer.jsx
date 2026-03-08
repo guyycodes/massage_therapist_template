@@ -4,7 +4,7 @@ import {
   Facebook, Instagram, Youtube,
   Heart, Shield
 } from 'lucide-react'
-import { BookingWidget } from '../hooks/useWidgetfied'
+import { BookingWidget, JobPortalWidget } from '../hooks/useWidgetfied'
 
 const CONTENT = {
   brand: {
@@ -239,12 +239,19 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* Booking Widget */}
-            <div className="mt-6">
+            {/* Widgets */}
+            <div className="mt-6 space-y-3">
               <BookingWidget
                 id="footer-booking-widget"
                 className="w-full"
               />
+              <div className="text-center">
+                <JobPortalWidget
+                  id="footer-portal-widget"
+                  className="w-full"
+                />
+                <p className="text-gray-500 text-[10px] tracking-wider uppercase mt-1">Client Portal</p>
+              </div>
             </div>
           </div>
         </div>

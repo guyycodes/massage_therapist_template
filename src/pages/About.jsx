@@ -3,7 +3,7 @@ import {
   CheckCircle, Users
 } from 'lucide-react'
 import { useIntersectionObserver, useStaggeredIntersection } from '../hooks/useIntersectionObserver'
-import { BookingWidget } from '../hooks/useWidgetfied'
+import { BookingWidget, JobPortalWidget } from '../hooks/useWidgetfied'
 
 const CREDENTIALS = [
   {
@@ -256,13 +256,17 @@ export default function About() {
             Ready to start your wellness journey? Book your first session and discover what 
             truly personalized massage therapy feels like.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <BookingWidget id="about-cta-booking-widget" />
-            <a
-              href="tel:+13035550172"
-              className="inline-flex items-center justify-center gap-3 text-accent-gold font-medium tracking-wider uppercase text-sm hover:text-white transition-colors"
-            >
-              Call: (303) 555-0172
+            <div className="text-center">
+              <JobPortalWidget id="about-cta-portal-widget" displayMode="button" />
+              <p className="text-neutral-500 text-xs mt-2 tracking-wider uppercase">Client Portal</p>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-4 text-neutral-400 mt-8">
+            <span className="text-sm uppercase tracking-wider">or call directly</span>
+            <a href="tel:+13035550172" className="text-accent-gold text-lg font-light hover:text-white transition-colors">
+              (303) 555-0172
             </a>
           </div>
         </div>

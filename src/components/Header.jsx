@@ -94,7 +94,7 @@ export default function Header() {
                   <JobPortalWidget
                     id="header-portal-widget"
                   />
-                  <p className="text-neutral-400 text-[10px] tracking-wider uppercase mt-1">Appointment Lookup</p>
+                  <p className="text-neutral-400 text-[10px] tracking-wider uppercase mt-1">Client Portal</p>
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@ export default function Header() {
                 id="header-mobile-portal-widget"
                 className="w-full"
               />
-              <p className="text-neutral-400 text-xs mt-1 tracking-wider uppercase">Appointment Lookup</p>
+              <p className="text-neutral-400 text-xs mt-1 tracking-wider uppercase">Client Portal</p>
             </div>
           </div>
         </div>
