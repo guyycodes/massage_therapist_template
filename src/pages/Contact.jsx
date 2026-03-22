@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Phone, Mail, MapPin, Clock,
-  Send, ArrowRight, CheckCircle,
-  Facebook, Instagram, Youtube
+  ArrowRight, CheckCircle,
+  Facebook, Instagram, Youtube, Calendar
 } from 'lucide-react'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
-import { JobPortalWidget } from '../hooks/useWidgetfied'
+import { JobPortalWidget, BookingWidget } from '../hooks/useWidgetfied'
 
 const CONTACT_INFO = [
   {
@@ -42,31 +41,10 @@ const SOCIAL_LINKS = [
 ]
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    preferredDate: '',
-    message: '',
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
   const heroObserver = useIntersectionObserver({ threshold: 0.1 })
   const formObserver = useIntersectionObserver({ threshold: 0.1 })
   const mapObserver = useIntersectionObserver({ threshold: 0.1 })
   const ctaObserver = useIntersectionObserver({ threshold: 0.1 })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // PLACEHOLDER: Connect to your form handler (EmailJS, Netlify Forms, etc.)
-    console.log('Form submitted:', formData)
-    setIsSubmitted(true)
-  }
-
-  const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
 
   return (
     <>
@@ -104,145 +82,47 @@ export default function Contact() {
             ref={formObserver.ref}
             className={`grid lg:grid-cols-5 gap-16 animate-fade-up ${formObserver.isVisible ? 'visible' : ''}`}
           >
-            {/* Form */}
-            <div className="lg:col-span-3">
+            {/* Inline Booking Widget */}
+            <div className="lg:col-span-3 min-w-0">
               <h2 className="text-3xl font-display font-light text-neutral-900 mb-2">
-                Request an Appointment
+                Book Your Session
               </h2>
-              <div className="h-px w-16 bg-accent-gold mb-8"></div>
+              <div className="h-px w-16 bg-accent-gold mb-4"></div>
+              <p className="text-neutral-500 mb-8">
+                Select a service, pick your preferred date and time, and book instantly.
+              </p>
 
-              {isSubmitted ? (
-                <div className="p-12 bg-neutral-50 border border-accent-gold/20 text-center">
-                  <CheckCircle className="w-12 h-12 text-accent-gold mx-auto mb-4" />
-                  <h3 className="text-2xl font-display font-light mb-2">Thank You!</h3>
-                  <p className="text-neutral-600 font-light">
-                    We've received your request and will confirm your appointment within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', phone: '', service: '', preferredDate: '', message: '' }) }}
-                    className="mt-6 text-accent-gold text-sm uppercase tracking-wider hover:text-neutral-900 transition-colors"
-                  >
-                    Submit Another Request
-                  </button>
+              <div className="bg-neutral-50 border border-neutral-200 rounded-xl p-4 sm:p-8 overflow-hidden max-w-full">
+                <BookingWidget id="contact-inline-booking-widget" displayMode="inline" className="w-full max-w-full" />
+              </div>
+
+              <div className="mt-8 flex items-start gap-4 p-6 bg-neutral-900 text-white rounded-xl">
+                <div className="w-12 h-12 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-5 h-5 text-accent-gold" />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm uppercase tracking-wider text-neutral-700 mb-2 font-light">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="input-field"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm uppercase tracking-wider text-neutral-700 mb-2 font-light">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="input-field"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm uppercase tracking-wider text-neutral-700 mb-2 font-light">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="input-field"
-                        placeholder="(303) 000-0000"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm uppercase tracking-wider text-neutral-700 mb-2 font-light">
-                        Service of Interest
-                      </label>
-                      <select
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="input-field"
-                      >
-                        <option value="">Select a service</option>
-                        <option value="swedish">Swedish Massage</option>
-                        <option value="deep-tissue">Deep Tissue Massage</option>
-                        <option value="sports">Sports Massage</option>
-                        <option value="hot-stone">Hot Stone Therapy</option>
-                        <option value="prenatal">Prenatal Massage</option>
-                        <option value="aromatherapy">Aromatherapy Massage</option>
-                        <option value="unsure">Not sure — need guidance</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm uppercase tracking-wider text-neutral-700 mb-2 font-light">
-                      Preferred Date & Time
-                    </label>
-                    <input
-                      type="text"
-                      name="preferredDate"
-                      value={formData.preferredDate}
-                      onChange={handleChange}
-                      className="input-field"
-                      placeholder="e.g., Next Tuesday afternoon"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm uppercase tracking-wider text-neutral-700 mb-2 font-light">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={5}
-                      className="input-field resize-none"
-                      placeholder="Tell us about your goals, areas of concern, or any questions..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="group relative px-10 py-4 bg-accent-gold text-black font-medium tracking-wider uppercase text-sm overflow-hidden transition-all duration-300 hover:text-white"
+                <div>
+                  <h4 className="text-lg font-medium mb-2">Prefer to Book by Phone?</h4>
+                  <p className="text-neutral-300 text-sm leading-relaxed mb-3">
+                    Call us directly and we'll help you find the perfect time for your session.
+                  </p>
+                  <a
+                    href="tel:+13035550172"
+                    className="inline-flex items-center gap-2 text-accent-gold text-sm hover:text-white transition-colors"
                   >
-                    <span className="relative z-10 flex items-center gap-2">
-                      <Send className="w-4 h-4" />
-                      Send Request
-                    </span>
-                    <div className="absolute inset-0 bg-neutral-900 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                  </button>
-                </form>
-              )}
+                    Call (303) 555-0172
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-2 space-y-8">
               {/* Contact Details */}
-              <div className="border border-neutral-200 p-8">
+              <div className="border border-neutral-200 p-8 text-center">
                 <h3 className="text-2xl font-display font-light text-neutral-900 mb-2">Contact Details</h3>
-                <div className="h-px w-16 bg-accent-gold mb-6"></div>
-                <div className="space-y-6">
+                <div className="h-px w-16 bg-accent-gold mx-auto mb-6"></div>
+                <div className="space-y-6 inline-block text-left">
                   {CONTACT_INFO.map((info, index) => {
                     const Icon = info.icon
                     return (
@@ -270,13 +150,13 @@ export default function Contact() {
               </div>
 
               {/* Social Links */}
-              <div className="border border-neutral-200 p-8">
+              <div className="border border-neutral-200 p-8 text-center">
                 <h3 className="text-2xl font-display font-light text-neutral-900 mb-2">Connect</h3>
-                <div className="h-px w-16 bg-accent-gold mb-6"></div>
+                <div className="h-px w-16 bg-accent-gold mx-auto mb-6"></div>
                 <p className="text-neutral-600 mb-6 font-light">
                   Follow for wellness tips, special offers, and availability updates
                 </p>
-                <div className="flex gap-3">
+                <div className="flex gap-3 justify-center">
                   {SOCIAL_LINKS.map((social) => {
                     const Icon = social.icon
                     return (
@@ -296,7 +176,7 @@ export default function Contact() {
               </div>
 
               {/* Booking Policy */}
-              <div className="bg-black text-white p-8">
+              <div className="bg-black text-white p-8 text-center">
                 <h4 className="text-lg font-medium mb-3 tracking-wide">Booking Policy</h4>
                 <p className="text-neutral-300 font-light text-sm leading-relaxed">
                   Appointments confirmed within 24 hours. 24-hour cancellation notice required. 
@@ -306,7 +186,7 @@ export default function Contact() {
               </div>
 
               {/* Portal Widget */}
-              <div className="border border-accent-gold/30 p-8 text-center">
+              <div className="border border-accent-gold/30 p-8 flex flex-col items-center text-center">
                 <h4 className="text-lg font-medium mb-3 tracking-wide">Client Portal</h4>
                 <p className="text-neutral-500 font-light text-sm mb-4">
                   Access your appointments, history, and account details.
@@ -314,7 +194,6 @@ export default function Contact() {
                 <JobPortalWidget
                   id="contact-portal-widget"
                   displayMode="button"
-                  className="w-full"
                 />
                 <p className="text-neutral-400 text-xs mt-2 tracking-wider uppercase">Client Portal</p>
               </div>
